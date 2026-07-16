@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="ro" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spațiul Deschis | Psihologia și Filozofia Intimității Conștiente</title>
     <meta name="description" content="Un blog dedicat dinamicii dintre masculin și feminin. Explorează semnificația profundă a deschiderii emoționale, a siguranței în cuplu și a vulnerabilității constructive.">
-    <!-- Tailwind CSS pentru design instant -->
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -13,135 +14,208 @@
                 extend: {
                     colors: {
                         alabaster: '#FDFBF7',
-                        slateDark: '#1E2229',
-                        burgundy: '#5C1D24',
-                        sand: '#F5F1E9',
-                        sandDark: '#E6DFD3',
+                        slateDark: '#111418', /* Negru profund, mai sobru */
+                        burgundy: '#4A121A',  /* Burgundy mai închis, regal */
+                        sand: '#F4EFE6',      /* Bej cald mătăsos */
+                        sandDark: '#DECFAF',  /* Accent auriu stins / pământiu */
                     },
                     fontFamily: {
                         serif: ['Playfair Display', 'Georgia', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts pentru tipografie premium -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts Premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* Textură fină de hârtie premium (Grain overlay) */
+        .premium-grain {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Animație elegantă de apariție (Fade-in-up) pentru Hero */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Hover de lux cu linie fluidă care se extinde din centru */
+        .hover-lux {
+            position: relative;
+        }
+        .hover-lux::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: #4A121A;
+            transform-origin: bottom right;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hover-lux:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
 </head>
 <body class="bg-alabaster text-slateDark font-sans selection:bg-burgundy selection:text-white antialiased">
 
-    <!-- Header / Navigație -->
-    <header class="border-b border-sandDark py-6 px-6 md:px-12">
+    <!-- Textura de fundal activă pe tot site-ul -->
+    <div class="premium-grain"></div>
+
+    <!-- Navigație Minimalistă Premium -->
+    <header class="border-b border-sand/50 py-8 px-6 md:px-12 backdrop-blur-md bg-alabaster/80 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="#" class="font-serif text-xl tracking-wider font-bold text-burgundy">SPAȚIUL DESCHIS</a>
-            <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-medium">
-                <a href="#" class="hover:text-burgundy transition">Esența</a>
-                <a href="#" class="hover:text-burgundy transition">Articole</a>
-                <a href="#" class="hover:text-burgundy transition">Despre</a>
-                <a href="#" class="hover:text-burgundy transition">Contact</a>
+            <a href="#" class="font-serif text-lg tracking-[0.25em] font-bold text-burgundy transition-all hover:tracking-[0.3em] duration-700">
+                SPAȚIUL DESCHIS
+            </a>
+            <nav class="hidden md:flex space-x-12 text-xs uppercase tracking-[0.2em] font-medium text-gray-600">
+                <a href="#" class="hover-lux hover:text-burgundy transition-colors duration-300">Esența</a>
+                <a href="#" class="hover-lux hover:text-burgundy transition-colors duration-300">Articole</a>
+                <a href="#" class="hover-lux hover:text-burgundy transition-colors duration-300">Despre</a>
+                <a href="#" class="hover-lux hover:text-burgundy transition-colors duration-300">Contact</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="py-16 md:py-24 px-6 border-b border-sandDark bg-gradient-to-b from-white to-alabaster">
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="text-xs uppercase tracking-widest text-burgundy font-semibold">Manifestul intimității</span>
-            <h1 class="font-serif text-4xl md:text-6xl mt-4 mb-6 leading-tight text-slateDark">
-                Dincolo de scuturi.<br>Arta deschiderii într-o lume a defensivului.
+    <!-- Hero Section (Cu spațiu aerisit de revistă de modă/design) -->
+    <section class="py-24 md:py-36 px-6 relative overflow-hidden">
+        <!-- Detaliu organic de fundal (lumină difuză stinsă) -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-sand/40 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10 animate-fade-in">
+            <span class="text-xs uppercase tracking-[0.3em] text-burgundy font-semibold block mb-6">Manifestul Intimității</span>
+            
+            <h1 class="font-serif text-4xl md:text-7xl mb-8 leading-[1.15] text-slateDark font-light">
+                Dincolo de scuturi.<br>
+                <span class="italic font-normal">Arta deschiderii</span> într-o lume a defensivului.
             </h1>
-            <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
+            
+            <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed font-light mb-12 tracking-wide">
                 Când o femeie alege să își coboare armurile în fața unui bărbat, nu asistăm la un act de capitulare, ci la cea mai înaltă formă de curaj emoțional. Descoperă psihologia din spatele vulnerabilității autentice.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#articol" class="bg-burgundy text-white px-8 py-3.5 text-sm uppercase tracking-widest font-semibold hover:bg-opacity-90 transition shadow-sm">
-                    Citește Eseul Pilon
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <!-- Buton de lux cu micro-interacțiune de expandare -->
+                <a href="#articol" class="group relative inline-flex items-center justify-center px-10 py-4 overflow-hidden border border-burgundy bg-burgundy text-white transition-all duration-500 hover:bg-transparent hover:text-burgundy w-full sm:w-auto">
+                    <span class="relative text-xs uppercase tracking-[0.2em] font-semibold">Citește Eseul Pilon</span>
                 </a>
-                <a href="#" class="border border-slateDark text-slateDark px-8 py-3.5 text-sm uppercase tracking-widest font-semibold hover:bg-slateDark hover:text-white transition">
-                    Despre noi
+                <a href="#" class="text-xs uppercase tracking-[0.2em] font-semibold text-slateDark hover-lux py-2">
+                    Despre Filozofie →
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Articolul Principal (Pilon) -->
-    <main id="articol" class="py-16 px-6">
-        <article class="max-w-3xl mx-auto">
-            <!-- Breadcrumbs -->
-            <nav class="text-xs text-gray-500 mb-8 tracking-wider uppercase">
-                <a href="#" class="hover:underline">Acasă</a> &gt; 
-                <a href="#" class="hover:underline">Articole</a> &gt; 
-                <span class="text-slateDark font-medium">Vulnerabilitatea nu este supunere</span>
+    <!-- Articolul Principal -->
+    <main id="articol" class="py-20 px-6 border-t border-sand/40 bg-white">
+        <article class="max-w-2xl mx-auto">
+            
+            <!-- Breadcrumbs Discrete -->
+            <nav class="text-[10px] text-gray-400 mb-12 tracking-[0.2em] uppercase">
+                <a href="#" class="hover:text-burgundy transition-colors">Acasă</a> 
+                <span class="mx-2 text-gray-300">•</span> 
+                <a href="#" class="hover:text-burgundy transition-colors">Articole</a> 
+                <span class="mx-2 text-gray-300">•</span> 
+                <span class="text-gray-600">Vulnerabilitatea</span>
             </nav>
 
-            <header class="mb-12">
-                <span class="text-xs uppercase tracking-widest text-burgundy font-bold">Dinamici Sănătoase</span>
-                <h2 class="text-3xl md:text-5xl font-serif mt-2 mb-4 leading-tight">Vulnerabilitatea nu este supunere: Anatomia unei deschideri conștiente</h2>
-                <p class="text-lg md:text-xl text-gray-600 italic font-serif">De ce capitularea în fața propriului adevăr emoțional în prezența celuilalt este un act de suveranitate, nu de slăbiciune.</p>
-                <div class="mt-6 flex items-center gap-3 text-xs text-gray-500 uppercase tracking-widest">
-                    <span>Timp de citire: 6 minute</span>
+            <header class="mb-16">
+                <span class="text-xs uppercase tracking-[0.25em] text-burgundy font-semibold block mb-3">Dinamici Sănătoase</span>
+                <h2 class="text-3xl md:text-5xl font-serif mt-2 mb-6 leading-[1.25] text-slateDark font-normal">
+                    Vulnerabilitatea nu este supunere: <br><span class="italic font-light">Anatomia unei deschideri conștiente</span>
+                </h2>
+                <p class="text-lg md:text-xl text-gray-500 italic font-serif leading-relaxed font-light">
+                    De ce capitularea în fața propriului adevăr emoțional în prezența celuilalt este un act de suveranitate, nu de slăbiciune.
+                </p>
+                <div class="mt-8 pt-8 border-t border-sand/50 flex items-center gap-6 text-[11px] text-gray-400 uppercase tracking-widest font-light">
+                    <span>Timp de lectură: 6 minute</span>
                     <span>•</span>
-                    <span>Actualizat: Iulie 2026</span>
+                    <span>Ediția de vară, 2026</span>
                 </div>
             </header>
 
-            <div class="space-y-6 text-base md:text-lg text-gray-800 leading-relaxed">
+            <div class="space-y-8 text-base md:text-[17px] text-gray-700 leading-[1.8] font-light tracking-wide">
                 <p>
                     Într-o cultură dominată de mecanisme de autoapărare, deschiderea în fața partenerului este adesea greșit înțeleasă. Când o femeie decide să își arate profunzimea, temerile, aspirațiile și sensibilitatea în fața unui bărbat, se produce un moment de cotitură relațională. Însă, prea des, această deschidere este confundată cu o formă de cedare a puterii sau cu o dinamică arhaică de subordonare. 
                 </p>
 
                 <p>
-                    Pentru a naviga corect acest teritoriu subtil, trebuie să facem o distincție clară între <strong>deschiderea emoțională conștientă</strong> și <strong>supunerea mecanică</strong>. Prima reprezintă un gest de libertate; cea de-a doua, o strategie de supraviețuire.
+                    Pentru a naviga corect acest teritoriu subtil, trebuie să facem o distincție clară între <strong class="font-medium text-slateDark">deschiderea emoțională conștientă</strong> și <strong class="font-medium text-slateDark">supunerea mecanică</strong>. Prima reprezintă un gest de libertate; cea de-a doua, o strategie de supraviețuire.
                 </p>
 
-                <h3 class="text-2xl font-serif mt-12 mb-4 text-burgundy">1. Geneza deschiderii: Siguranța ca precondiție</h3>
+                <h3 class="text-2xl font-serif mt-16 mb-6 text-burgundy font-light italic">1. Geneza deschiderii: Siguranța ca precondiție</h3>
                 <p>
                     O femeie nu se deschide dintr-o obligație morală sau dintr-un algoritm relațional. Deschiderea este un răspuns organic la un mediu specific. Acest mediu este definit de absența judecății și de capacitatea bărbatului de a rămâne prezent fără a încerca să „repare” sau să controleze situația.
                 </p>
                 
-                <blockquote class="border-l-4 border-burgundy pl-6 my-8 italic text-gray-700 font-serif text-lg">
+                <!-- Citat premium cu design fin -->
+                <blockquote class="border-l-[3px] border-burgundy/60 pl-8 my-12 italic text-gray-600 font-serif text-lg md:text-xl leading-relaxed">
                     „Nu te poți deschide într-un spațiu în care fiecare mărturisire este folosită ulterior ca argument într-o dispută. Siguranța emoțională este moneda de schimb a intimității reale.”
                 </blockquote>
 
-                <h3 class="text-2xl font-serif mt-12 mb-4 text-burgundy">2. Linia de demarcație dintre dăruire și obediență</h3>
+                <h3 class="text-2xl font-serif mt-16 mb-6 text-burgundy font-light italic">2. Linia de demarcație dintre dăruire și obediență</h3>
                 <p>
                     Este esențial să definim termenii pentru a evita confuziile de putere:
                 </p>
 
-                <div class="my-8 overflow-x-auto border border-sandDark">
-                    <table class="w-full text-left border-collapse text-sm md:text-base">
+                <!-- Tabel stilizat ultra-minimalist -->
+                <div class="my-12 overflow-x-auto border-t border-b border-sand">
+                    <table class="w-full text-left border-collapse text-sm">
                         <thead>
-                            <tr class="border-b border-sandDark bg-sand">
-                                <th class="p-4 font-serif font-bold">Dimensiune</th>
-                                <th class="p-4 font-serif font-bold">Deschidere & Dăruire Sănătoasă</th>
-                                <th class="p-4 font-serif font-bold">Supunere / Obediență</th>
+                            <tr class="bg-alabaster/50 text-[11px] uppercase tracking-[0.15em] text-gray-500">
+                                <th class="p-5 font-medium">Dimensiune</th>
+                                <th class="p-5 font-medium">Dăruire Sănătoasă</th>
+                                <th class="p-5 font-medium">Supunere</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-sandDark">
+                        <tbody class="divide-y divide-sand/50 text-gray-600 font-light">
                             <tr>
-                                <td class="p-4 font-semibold">Sursă</td>
-                                <td class="p-4 text-gray-700">Încredere deplină în sine și în celălalt.</td>
-                                <td class="p-4 text-gray-700">Frica de respingere sau de conflict.</td>
+                                <td class="p-5 font-medium text-slateDark">Sursă</td>
+                                <td class="p-5">Încredere deplină în sine și în celălalt.</td>
+                                <td class="p-5 text-gray-400">Frica de respingere sau de conflict.</td>
                             </tr>
                             <tr>
-                                <td class="p-4 font-semibold">Identitate</td>
-                                <td class="p-4 text-gray-700">Se păstrează intactă; granițele sunt flexibile.</td>
-                                <td class="p-4 text-gray-700">Se diluează; nevoile proprii sunt ignorate.</td>
+                                <td class="p-5 font-medium text-slateDark">Identitate</td>
+                                <td class="p-5">Se păstrează intactă; granițele sunt flexibile.</td>
+                                <td class="p-5 text-gray-400">Se diluează; nevoile proprii sunt ignorate.</td>
                             </tr>
                             <tr>
-                                <td class="p-4 font-semibold">Scop</td>
-                                <td class="p-4 text-gray-700">Conectare profundă, creștere comună.</td>
-                                <td class="p-4 text-gray-700">Evitarea abandonului, obținerea validării.</td>
+                                <td class="p-5 font-medium text-slateDark">Scop</td>
+                                <td class="p-5">Conectare profundă, creștere comună.</td>
+                                <td class="p-5 text-gray-400">Evitarea abandonului.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <!-- Callout Box -->
-                <div class="p-8 bg-sand border-l-4 border-burgundy my-10">
-                    <h4 class="text-lg font-serif font-bold mb-2 text-burgundy">Sinteză pentru reflecție</h4>
-                    <p class="text-sm md:text-base text-gray-700 leading-relaxed">
+                <!-- Callout Box Premium (Tip foaie de jurnal) -->
+                <div class="p-10 bg-alabaster border border-sand/60 my-16 relative">
+                    <div class="absolute top-0 left-10 -translate-y-1/2 bg-alabaster px-4 text-[10px] uppercase tracking-[0.3em] text-burgundy font-semibold">
+                        Sinteză de parcurs
+                    </div>
+                    <p class="text-sm md:text-base text-gray-600 leading-relaxed font-light italic">
                         Deschiderea autentică nu înseamnă să devii predictibilă sau ușor de gestionat. Înseamnă să ai încredere că adevărul tău interior este suficient de valoros pentru a fi împărtășit, într-un cadru în care respectul este reciproc și necondiționat.
                     </p>
                 </div>
@@ -149,11 +223,13 @@
         </article>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slateDark text-white py-12 px-6 border-t border-gray-800">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <span class="font-serif text-lg tracking-wider text-sandDark">SPAȚIUL DESCHIS</span>
-            <p class="text-xs text-gray-400">© 2026 Spațiul Deschis. Toate drepturile rezervate. Un spațiu pentru dialog onest.</p>
+    <!-- Footer Elegant -->
+    <footer class="bg-slateDark text-white py-16 px-6 border-t border-sand/10">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <span class="font-serif text-sm tracking-[0.3em] text-sand">SPAȚIUL DESCHIS</span>
+            <p class="text-[10px] text-gray-500 tracking-wider font-light">
+                © 2026 Spațiul Deschis. Editare de prestigiu dedicată dialogului onest și nuanțat.
+            </p>
         </div>
     </footer>
 
