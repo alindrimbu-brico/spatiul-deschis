@@ -14,10 +14,10 @@
                 extend: {
                     colors: {
                         alabaster: '#FDFBF7',
-                        slateDark: '#111418', /* Negru profund, mai sobru */
-                        burgundy: '#4A121A',  /* Burgundy mai închis, regal */
-                        sand: '#F4EFE6',      /* Bej cald mătăsos */
-                        sandDark: '#DECFAF',  /* Accent auriu stins / pământiu */
+                        slateDark: '#111418',
+                        burgundy: '#4A121A',
+                        sand: '#F4EFE6',
+                        sandDark: '#DECFAF',
                     },
                     fontFamily: {
                         serif: ['Playfair Display', 'Georgia', 'serif'],
@@ -41,11 +41,10 @@
             z-index: 9999;
         }
 
-        /* Animație elegantă de apariție (Fade-in-up) pentru Hero */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -54,10 +53,9 @@
         }
 
         .animate-fade-in {
-            animation: fadeInUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* Hover de lux cu linie fluidă care se extinde din centru */
         .hover-lux {
             position: relative;
         }
@@ -85,43 +83,60 @@
     <div class="premium-grain"></div>
 
     <!-- Navigație Minimalistă Premium -->
-    <header class="border-b border-sand/50 py-8 px-6 md:px-12 backdrop-blur-md bg-alabaster/80 sticky top-0 z-50">
+    <header class="border-b border-sand/50 py-6 px-6 md:px-12 backdrop-blur-md bg-alabaster/80 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="#" class="font-serif text-lg tracking-[0.25em] font-bold text-burgundy transition-all hover:tracking-[0.3em] duration-700">
-                SPAȚIUL DESCHIS
+            
+            <!-- Logo Stilizat (Monogramă + Text) -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-9 h-9 border border-burgundy flex items-center justify-center rounded-full transition-transform duration-700 group-hover:rotate-180">
+                    <span class="font-serif text-xs font-bold text-burgundy tracking-tighter">SD</span>
+                </div>
+                <span class="font-serif text-sm tracking-[0.25em] font-bold text-burgundy hidden sm:inline-block transition-all group-hover:tracking-[0.28em] duration-700">
+                    SPAȚIUL DESCHIS
+                </span>
             </a>
-            <nav class="hidden md:flex space-x-12 text-xs uppercase tracking-[0.2em] font-medium text-gray-600">
-                <a href="#" class="hover-lux hover:text-burgundy transition-colors duration-300">Esența</a>
-                <a href="#" class="hover-lux hover:text-burgundy transition-colors duration-300">Articole</a>
-                <a href="#" class="hover-lux hover:text-burgundy transition-colors duration-300">Despre</a>
-                <a href="#" class="hover-lux hover:text-burgundy transition-colors duration-300">Contact</a>
+
+            <!-- Meniu Navigație -->
+            <nav class="hidden lg:flex space-x-12 text-xs uppercase tracking-[0.2em] font-medium text-gray-600">
+                <a href="#" data-key="nav-essence" class="hover-lux hover:text-burgundy transition-colors duration-300">Esența</a>
+                <a href="#" data-key="nav-articles" class="hover-lux hover:text-burgundy transition-colors duration-300">Articole</a>
+                <a href="#" data-key="nav-about" class="hover-lux hover:text-burgundy transition-colors duration-300">Despre</a>
+                <a href="#" data-key="nav-contact" class="hover-lux hover:text-burgundy transition-colors duration-300">Contact</a>
             </nav>
+
+            <!-- Selectorul de Limbă Premium -->
+            <div class="flex items-center gap-2 border border-sandDark/60 px-3 py-1.5 rounded-sm bg-white/50 text-xs tracking-wider">
+                <button onclick="changeLanguage('ro')" id="btn-ro" class="font-semibold text-burgundy transition-colors px-1">RO</button>
+                <span class="text-gray-300">|</span>
+                <button onclick="changeLanguage('en')" id="btn-en" class="text-gray-400 hover:text-burgundy transition-colors px-1">EN</button>
+                <span class="text-gray-300">|</span>
+                <button onclick="changeLanguage('pt')" id="btn-pt" class="text-gray-400 hover:text-burgundy transition-colors px-1">PT</button>
+            </div>
+
         </div>
     </header>
 
-    <!-- Hero Section (Cu spațiu aerisit de revistă de modă/design) -->
-    <section class="py-24 md:py-36 px-6 relative overflow-hidden">
-        <!-- Detaliu organic de fundal (lumină difuză stinsă) -->
+    <!-- Hero Section -->
+    <section class="py-20 md:py-32 px-6 relative overflow-hidden">
         <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-sand/40 rounded-full blur-[120px] pointer-events-none"></div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10 animate-fade-in">
-            <span class="text-xs uppercase tracking-[0.3em] text-burgundy font-semibold block mb-6">Manifestul Intimității</span>
+            <span data-key="hero-tag" class="text-xs uppercase tracking-[0.3em] text-burgundy font-semibold block mb-6">Manifestul Intimității</span>
             
-            <h1 class="font-serif text-4xl md:text-7xl mb-8 leading-[1.15] text-slateDark font-light">
+            <h1 id="hero-title" class="font-serif text-3xl md:text-6xl mb-8 leading-[1.2] text-slateDark font-light">
                 Dincolo de scuturi.<br>
                 <span class="italic font-normal">Arta deschiderii</span> într-o lume a defensivului.
             </h1>
             
-            <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed font-light mb-12 tracking-wide">
+            <p id="hero-desc" class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed font-light mb-12 tracking-wide">
                 Când o femeie alege să își coboare armurile în fața unui bărbat, nu asistăm la un act de capitulare, ci la cea mai înaltă formă de curaj emoțional. Descoperă psihologia din spatele vulnerabilității autentice.
             </p>
             
             <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
-                <!-- Buton de lux cu micro-interacțiune de expandare -->
                 <a href="#articol" class="group relative inline-flex items-center justify-center px-10 py-4 overflow-hidden border border-burgundy bg-burgundy text-white transition-all duration-500 hover:bg-transparent hover:text-burgundy w-full sm:w-auto">
-                    <span class="relative text-xs uppercase tracking-[0.2em] font-semibold">Citește Eseul Pilon</span>
+                    <span data-key="hero-cta-primary" class="relative text-xs uppercase tracking-[0.2em] font-semibold">Citește Eseul Pilon</span>
                 </a>
-                <a href="#" class="text-xs uppercase tracking-[0.2em] font-semibold text-slateDark hover-lux py-2">
+                <a href="#" data-key="hero-cta-secondary" class="text-xs uppercase tracking-[0.2em] font-semibold text-slateDark hover-lux py-2">
                     Despre Filozofie →
                 </a>
             </div>
@@ -129,93 +144,92 @@
     </section>
 
     <!-- Articolul Principal -->
-    <main id="articol" class="py-20 px-6 border-t border-sand/40 bg-white">
+    <main id="articol" class="py-16 px-6 border-t border-sand/40 bg-white">
         <article class="max-w-2xl mx-auto">
             
-            <!-- Breadcrumbs Discrete -->
+            <!-- Breadcrumbs -->
             <nav class="text-[10px] text-gray-400 mb-12 tracking-[0.2em] uppercase">
-                <a href="#" class="hover:text-burgundy transition-colors">Acasă</a> 
+                <a href="#" data-key="bread-home" class="hover:text-burgundy transition-colors">Acasă</a> 
                 <span class="mx-2 text-gray-300">•</span> 
-                <a href="#" class="hover:text-burgundy transition-colors">Articole</a> 
+                <a href="#" data-key="bread-articles" class="hover:text-burgundy transition-colors">Articole</a> 
                 <span class="mx-2 text-gray-300">•</span> 
-                <span class="text-gray-600">Vulnerabilitatea</span>
+                <span data-key="bread-current" class="text-gray-600">Vulnerabilitatea</span>
             </nav>
 
             <header class="mb-16">
-                <span class="text-xs uppercase tracking-[0.25em] text-burgundy font-semibold block mb-3">Dinamici Sănătoase</span>
-                <h2 class="text-3xl md:text-5xl font-serif mt-2 mb-6 leading-[1.25] text-slateDark font-normal">
+                <span data-key="art-tag" class="text-xs uppercase tracking-[0.25em] text-burgundy font-semibold block mb-3">Dinamici Sănătoase</span>
+                <h2 id="art-title" class="text-2xl md:text-5xl font-serif mt-2 mb-6 leading-[1.25] text-slateDark font-normal">
                     Vulnerabilitatea nu este supunere: <br><span class="italic font-light">Anatomia unei deschideri conștiente</span>
                 </h2>
-                <p class="text-lg md:text-xl text-gray-500 italic font-serif leading-relaxed font-light">
+                <p id="art-sub" class="text-lg md:text-xl text-gray-500 italic font-serif leading-relaxed font-light">
                     De ce capitularea în fața propriului adevăr emoțional în prezența celuilalt este un act de suveranitate, nu de slăbiciune.
                 </p>
                 <div class="mt-8 pt-8 border-t border-sand/50 flex items-center gap-6 text-[11px] text-gray-400 uppercase tracking-widest font-light">
-                    <span>Timp de lectură: 6 minute</span>
+                    <span id="art-meta-read">Timp de lectură: 6 minute</span>
                     <span>•</span>
-                    <span>Ediția de vară, 2026</span>
+                    <span id="art-meta-date">Ediția de vară, 2026</span>
                 </div>
             </header>
 
             <div class="space-y-8 text-base md:text-[17px] text-gray-700 leading-[1.8] font-light tracking-wide">
-                <p>
+                <p id="p1">
                     Într-o cultură dominată de mecanisme de autoapărare, deschiderea în fața partenerului este adesea greșit înțeleasă. Când o femeie decide să își arate profunzimea, temerile, aspirațiile și sensibilitatea în fața unui bărbat, se produce un moment de cotitură relațională. Însă, prea des, această deschidere este confundată cu o formă de cedare a puterii sau cu o dinamică arhaică de subordonare. 
                 </p>
 
-                <p>
-                    Pentru a naviga corect acest teritoriu subtil, trebuie să facem o distincție clară între <strong class="font-medium text-slateDark">deschiderea emoțională conștientă</strong> și <strong class="font-medium text-slateDark">supunerea mecanică</strong>. Prima reprezintă un gest de libertate; cea de-a doua, o strategie de supraviețuire.
+                <p id="p2">
+                    Pentru a naviga corect acest teritoriu subtil, trebuie să facem o distincție clară între <strong>deschiderea emoțională conștientă</strong> și <strong>supunerea mecanică</strong>. Prima reprezintă un gest de libertate; cea de-a doua, o strategie de supraviețuire.
                 </p>
 
-                <h3 class="text-2xl font-serif mt-16 mb-6 text-burgundy font-light italic">1. Geneza deschiderii: Siguranța ca precondiție</h3>
-                <p>
+                <h3 id="h3-1" class="text-2xl font-serif mt-16 mb-6 text-burgundy font-light italic">1. Geneza deschiderii: Siguranța ca precondiție</h3>
+                <p id="p3">
                     O femeie nu se deschide dintr-o obligație morală sau dintr-un algoritm relațional. Deschiderea este un răspuns organic la un mediu specific. Acest mediu este definit de absența judecății și de capacitatea bărbatului de a rămâne prezent fără a încerca să „repare” sau să controleze situația.
                 </p>
                 
-                <!-- Citat premium cu design fin -->
-                <blockquote class="border-l-[3px] border-burgundy/60 pl-8 my-12 italic text-gray-600 font-serif text-lg md:text-xl leading-relaxed">
-                    „Nu te poți deschide într-un spațiu în care fiecare mărturisire este folosită ulterior ca argument într-o dispută. Siguranța emoțională este moneda de schimb a intimității reale.”
+                <blockquote id="quote" class="border-l-[3px] border-burgundy/60 pl-8 my-12 italic text-gray-600 font-serif text-lg md:text-xl leading-relaxed">
+                    „Nu te poți deschide într-un spațiu în care fiecare mărturisire este folosită ulterior ca argument într-o dispută. Siguranța emoțională este moneda de schimb a intimității reali.”
                 </blockquote>
 
-                <h3 class="text-2xl font-serif mt-16 mb-6 text-burgundy font-light italic">2. Linia de demarcație dintre dăruire și obediență</h3>
-                <p>
+                <h3 id="h3-2" class="text-2xl font-serif mt-16 mb-6 text-burgundy font-light italic">2. Linia de demarcație dintre dăruire și obediență</h3>
+                <p id="p4">
                     Este esențial să definim termenii pentru a evita confuziile de putere:
                 </p>
 
-                <!-- Tabel stilizat ultra-minimalist -->
+                <!-- Tabel -->
                 <div class="my-12 overflow-x-auto border-t border-b border-sand">
                     <table class="w-full text-left border-collapse text-sm">
                         <thead>
                             <tr class="bg-alabaster/50 text-[11px] uppercase tracking-[0.15em] text-gray-500">
-                                <th class="p-5 font-medium">Dimensiune</th>
-                                <th class="p-5 font-medium">Dăruire Sănătoasă</th>
-                                <th class="p-5 font-medium">Supunere</th>
+                                <th id="th-dim" class="p-5 font-medium">Dimensiune</th>
+                                <th id="th-gift" class="p-5 font-medium">Dăruire Sănătoasă</th>
+                                <th id="th-sub" class="p-5 font-medium">Supunere</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-sand/50 text-gray-600 font-light">
                             <tr>
-                                <td class="p-5 font-medium text-slateDark">Sursă</td>
-                                <td class="p-5">Încredere deplină în sine și în celălalt.</td>
-                                <td class="p-5 text-gray-400">Frica de respingere sau de conflict.</td>
+                                <td id="td-source" class="p-5 font-medium text-slateDark">Sursă</td>
+                                <td id="td-source-gift" class="p-5">Încredere deplină în sine și în celălalt.</td>
+                                <td id="td-source-sub" class="p-5 text-gray-400">Frica de respingere sau de conflict.</td>
                             </tr>
                             <tr>
-                                <td class="p-5 font-medium text-slateDark">Identitate</td>
-                                <td class="p-5">Se păstrează intactă; granițele sunt flexibile.</td>
-                                <td class="p-5 text-gray-400">Se diluează; nevoile proprii sunt ignorate.</td>
+                                <td id="td-id" class="p-5 font-medium text-slateDark">Identitate</td>
+                                <td id="td-id-gift" class="p-5">Se păstrează intactă; granițele sunt flexibile.</td>
+                                <td id="td-id-sub" class="p-5 text-gray-400">Se diluează; nevoile proprii sunt ignorate.</td>
                             </tr>
                             <tr>
-                                <td class="p-5 font-medium text-slateDark">Scop</td>
-                                <td class="p-5">Conectare profundă, creștere comună.</td>
-                                <td class="p-5 text-gray-400">Evitarea abandonului.</td>
+                                <td id="td-scope" class="p-5 font-medium text-slateDark">Scop</td>
+                                <td id="td-scope-gift" class="p-5">Conectare profundă, creștere comună.</td>
+                                <td id="td-scope-sub" class="p-5 text-gray-400">Evitarea abandonului.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <!-- Callout Box Premium (Tip foaie de jurnal) -->
+                <!-- Callout Box -->
                 <div class="p-10 bg-alabaster border border-sand/60 my-16 relative">
-                    <div class="absolute top-0 left-10 -translate-y-1/2 bg-alabaster px-4 text-[10px] uppercase tracking-[0.3em] text-burgundy font-semibold">
+                    <div id="callout-tag" class="absolute top-0 left-10 -translate-y-1/2 bg-alabaster px-4 text-[10px] uppercase tracking-[0.3em] text-burgundy font-semibold">
                         Sinteză de parcurs
                     </div>
-                    <p class="text-sm md:text-base text-gray-600 leading-relaxed font-light italic">
+                    <p id="callout-text" class="text-sm md:text-base text-gray-600 leading-relaxed font-light italic">
                         Deschiderea autentică nu înseamnă să devii predictibilă sau ușor de gestionat. Înseamnă să ai încredere că adevărul tău interior este suficient de valoros pentru a fi împărtășit, într-un cadru în care respectul este reciproc și necondiționat.
                     </p>
                 </div>
@@ -223,15 +237,174 @@
         </article>
     </main>
 
-    <!-- Footer Elegant -->
+    <!-- Footer -->
     <footer class="bg-slateDark text-white py-16 px-6 border-t border-sand/10">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <span class="font-serif text-sm tracking-[0.3em] text-sand">SPAȚIUL DESCHIS</span>
-            <p class="text-[10px] text-gray-500 tracking-wider font-light">
+            <p id="footer-text" class="text-[10px] text-gray-500 tracking-wider font-light">
                 © 2026 Spațiul Deschis. Editare de prestigiu dedicată dialogului onest și nuanțat.
             </p>
         </div>
     </footer>
 
+    <!-- Scriptul de Traducere -->
+    <script>
+        const translations = {
+            ro: {
+                "nav-essence": "Esența",
+                "nav-articles": "Articole",
+                "nav-about": "Despre",
+                "nav-contact": "Contact",
+                "hero-tag": "Manifestul Intimității",
+                "hero-title": "Dincolo de scuturi.<br><span class='italic font-normal'>Arta deschiderii</span> într-o lume a defensivului.",
+                "hero-desc": "Când o femeie alege să își coboare armurile în fața unui bărbat, nu asistăm la un act de capitulare, ci la cea mai înaltă formă de curaj emoțional. Descoperă psihologia din spatele vulnerabilității autentice.",
+                "hero-cta-primary": "Citește Eseul Pilon",
+                "hero-cta-secondary": "Despre Filozofie →",
+                "bread-home": "Acasă",
+                "bread-articles": "Articole",
+                "bread-current": "Vulnerabilitatea",
+                "art-tag": "Dinamici Sănătoase",
+                "art-title": "Vulnerabilitatea nu este supunere: <br><span class='italic font-light'>Anatomia unei deschideri conștiente</span>",
+                "art-sub": "De ce capitularea în fața propriului adevăr emoțional în prezența celuilalt este un act de suveranitate, nu de slăbiciune.",
+                "art-meta-read": "Timp de lectură: 6 minute",
+                "art-meta-date": "Ediția de vară, 2026",
+                "p1": "Într-o cultură dominată de mecanisme de autoapărare, deschiderea în fața partenerului este adesea greșit înțeleasă. Când o femeie decide să își arate profunzimea, temerile, aspirațiile și sensibilitatea în fața unui bărbat, se produce un moment de cotitură relațională. Însă, prea des, această deschidere este confundată cu o formă de cedare a puterii sau cu o dinamică arhaică de subordonare.",
+                "p2": "Pentru a naviga corect acest teritoriu subtil, trebuie să facem o distincție clară între <strong>deschiderea emoțională conștientă</strong> și <strong>supunerea mecanică</strong>. Prima reprezintă un gest de libertate; cea de-a doua, o strategie de supraviețuire.",
+                "h3-1": "1. Geneza deschiderii: Siguranța ca precondiție",
+                "p3": "O femeie nu se deschide dintr-o obligație morală sau dintr-un algoritm relațional. Deschiderea este un răspuns organic la un mediu specific. Acest mediu este definit de absența judecății și de capacitatea bărbatului de a rămâne prezent fără a încerca să „repare” sau să controleze situația.",
+                "quote": "„Nu te poți deschide într-un spațiu în care fiecare mărturisire este folosită ulterior ca argument într-o dispută. Siguranța emoțională este moneda de schimb a intimității reale.”",
+                "h3-2": "2. Linia de demarcație dintre dăruire și obediență",
+                "p4": "Este esențial să definim termenii pentru a evita confuziile de putere:",
+                "th-dim": "Dimensiune",
+                "th-gift": "Dăruire Sănătoasă",
+                "th-sub": "Supunere",
+                "td-source": "Sursă",
+                "td-source-gift": "Încredere deplină în sine și în celălalt.",
+                "td-source-sub": "Frica de respingere sau de conflict.",
+                "td-id": "Identitate",
+                "td-id-gift": "Se păstrează intactă; granițele sunt flexibile.",
+                "td-id-sub": "Se diluează; nevoile proprii sunt ignorate.",
+                "td-scope": "Scop",
+                "td-scope-gift": "Conectare profundă, creștere comună.",
+                "td-scope-sub": "Evitarea abandonului.",
+                "callout-tag": "Sinteză de parcurs",
+                "callout-text": "Deschiderea autentică nu înseamnă să devii predictibilă sau ușor de gestionat. Înseamnă să ai încredere că adevărul tău interior este suficient de valoros pentru a fi împărtășit, într-un cadru în care respectul este reciproc și necondiționat.",
+                "footer-text": "© 2026 Spațiul Deschis. Editare de prestigiu dedicată dialogului onest și nuanțat."
+            },
+            en: {
+                "nav-essence": "Essence",
+                "nav-articles": "Articles",
+                "nav-about": "About",
+                "nav-contact": "Contact",
+                "hero-tag": "The Intimacy Manifesto",
+                "hero-title": "Beyond the Shields.<br><span class='italic font-normal'>The art of opening</span> in a defensive world.",
+                "hero-desc": "When a woman chooses to lower her armor before a man, we do not witness an act of surrender, but the highest form of emotional courage. Discover the psychology behind authentic vulnerability.",
+                "hero-cta-primary": "Read the Pillar Essay",
+                "hero-cta-secondary": "About Philosophy →",
+                "bread-home": "Home",
+                "bread-articles": "Articles",
+                "bread-current": "Vulnerability",
+                "art-tag": "Healthy Dynamics",
+                "art-title": "Vulnerability is Not Submission: <br><span class='italic font-light'>The Anatomy of a Conscious Opening</span>",
+                "art-sub": "Why surrendering to one's own emotional truth in the presence of the other is an act of sovereignty, not weakness.",
+                "art-meta-read": "Reading time: 6 minutes",
+                "art-meta-date": "Summer Edition, 2026",
+                "p1": "In a culture dominated by self-defense mechanisms, opening up to a partner is often misunderstood. When a woman decides to reveal her depth, fears, aspirations, and sensitivity to a man, a relational turning point occurs. Too often, however, this opening is confused with a surrender of power or an archaic dynamic of subordination.",
+                "p2": "To correctly navigate this subtle territory, we must draw a clear distinction between <strong>conscious emotional opening</strong> and <strong>mechanical submission</strong>. The former is an act of freedom; the latter, a survival strategy.",
+                "h3-1": "1. The Genesis of Opening: Safety as a Precondition",
+                "p3": "A woman does not open up out of moral obligation or a relationship algorithm. Opening is an organic response to a specific environment. This environment is defined by the absence of judgment and the man's ability to remain present without trying to 'fix' or control the situation.",
+                "quote": "“You cannot open up in a space where every confession is later used as an argument in a dispute. Emotional safety is the currency of real intimacy.”",
+                "h3-2": "2. The Demarcation Line Between Devotion and Obedience",
+                "p4": "It is essential to define the terms to avoid power confusions:",
+                "th-dim": "Dimension",
+                "th-gift": "Healthy Devotion",
+                "th-sub": "Submission",
+                "td-source": "Source",
+                "td-source-gift": "Full trust in oneself and the other.",
+                "td-source-sub": "Fear of rejection or conflict.",
+                "td-id": "Identity",
+                "td-id-gift": "Remains intact; boundaries are flexible.",
+                "td-id-sub": "Diluted; personal needs are ignored.",
+                "td-scope": "Purpose",
+                "td-scope-gift": "Deep connection, mutual growth.",
+                "td-scope-sub": "Avoiding abandonment.",
+                "callout-tag": "Synthesis",
+                "callout-text": "Authentic opening does not mean becoming predictable or easy to manage. It means trusting that your inner truth is valuable enough to be shared, in a setting where respect is mutual and unconditional.",
+                "footer-text": "© 2026 The Open Space. Prestige publishing dedicated to honest and nuanced dialogue."
+            },
+            pt: {
+                "nav-essence": "Essência",
+                "nav-articles": "Artigos",
+                "nav-about": "Sobre",
+                "nav-contact": "Contato",
+                "hero-tag": "O Manifesto da Intimidade",
+                "hero-title": "Para Além dos Escudos.<br><span class='italic font-normal'>A arte de se abrir</span> num mundo defensivo.",
+                "hero-desc": "Quando uma mulher escolhe baixar as suas armaduras diante de um homem, não testemunhamos um ato de capitulação, mas a forma mais elevada de coragem emocional. Descubra a psicologia por trás da vulnerabilidade autêntica.",
+                "hero-cta-primary": "Ler o Artigo Principal",
+                "hero-cta-secondary": "Sobre a Filosofia →",
+                "bread-home": "Início",
+                "bread-articles": "Artigos",
+                "bread-current": "Vulnerabilidade",
+                "art-tag": "Dinâmicas Saudáveis",
+                "art-title": "Vulnerabilidade não é Submissão: <br><span class='italic font-light'>A Anatomia de uma Abertura Consciente</span>",
+                "art-sub": "Por que render-se à própria verdade emocional na presença do outro é um ato de soberania, não de fraqueza.",
+                "art-meta-read": "Tempo de leitura: 6 minutos",
+                "art-meta-date": "Edição de Verão, 2026",
+                "p1": "Numa cultura dominada por mecanismos de autodefesa, abrir-se para o parceiro é frequentemente incompreendido. Quando uma mulher decide revelar a sua profundidade, medos, aspirações e sensibilidade a um homem, ocorre um ponto de viragem relacional. No entanto, muitas vezes, essa abertura é confundida com uma entrega de poder ou com uma dinâmica arcaica de subordinação.",
+                "p2": "Para navegar corretamente neste território subtil, devemos fazer uma distinção clara entre a <strong>abertura emocional consciente</strong> e a <strong>submissão mecânica</strong>. A primeira representa um gesto de liberdade; a segunda, uma estratégia de sobrevivência.",
+                "h3-1": "1. A Génese da Abertura: A Segurança como Pré-requisito",
+                "p3": "Uma mulher não se abre por obrigação moral ou por um algoritmo de relacionamento. A abertura é uma resposta orgânica a um ambiente específico. Este ambiente é definido pela ausência de julgamento e pela capacidade do homem de permanecer presente sem tentar 'consertar' ou controlar a situação.",
+                "quote": "“Não te podes abrir num espaço onde cada confissão é usada mais tarde como argumento numa discussão. A segurança emocional é a moeda de troca da intimidade real.”",
+                "h3-2": "2. A Linha de Demarcação Entre Entrega e Obediência",
+                "p4": "É essencial definir os termos para evitar confusões de poder:",
+                "th-dim": "Dimensão",
+                "th-gift": "Entrega Saudável",
+                "th-sub": "Submissão",
+                "td-source": "Origem",
+                "td-source-gift": "Confiança plena em si mesma e no outro.",
+                "td-source-sub": "Medo da rejeição ou do conflito.",
+                "td-id": "Identidade",
+                "td-id-gift": "Mantém-se intacta; os limites são flexíveis.",
+                "td-id-sub": "Dilui-se; as necessidades próprias são ignoradas.",
+                "td-scope": "Objetivo",
+                "td-scope-gift": "Conexão profunda, crescimento mútuo.",
+                "td-scope-sub": "Evitar o abandono.",
+                "callout-tag": "Síntese",
+                "callout-text": "A abertura autêntica não significa tornar-se previsível ou fácil de gerir. Significa confiar que a sua verdade interior é valiosa o suficiente para ser partilhada, num cenário onde o respeito é mútuo e incondicional.",
+                "footer-text": "© 2026 O Espaço Aberto. Edição de prestígio dedicada ao diálogo honesto e nuançado."
+            }
+        };
+
+        function changeLanguage(lang) {
+            // Actualizează textele simple
+            for (let key in translations[lang]) {
+                const element = document.getElementById(key) || document.querySelector(`[data-key="${key}"]`);
+                if (element) {
+                    element.innerHTML = translations[lang][key];
+                }
+            }
+
+            // Resetează stilul butoanelor de limbă
+            ['ro', 'en', 'pt'].forEach(l => {
+                const btn = document.getElementById(`btn-${l}`);
+                if (l === lang) {
+                    btn.classList.add('text-burgundy', 'font-semibold');
+                    btn.classList.remove('text-gray-400');
+                } else {
+                    btn.classList.remove('text-burgundy', 'font-semibold');
+                    btn.classList.add('text-gray-400');
+                }
+            });
+
+            // Salvează preferința în localStorage
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // Încarcă limba salvată sau detectează automat
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'ro';
+            changeLanguage(savedLang);
+        });
+    </script>
 </body>
 </html>
